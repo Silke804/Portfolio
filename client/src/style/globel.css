@@ -1,0 +1,67 @@
+:root {
+    --ff-text: avenir;
+    --ff-heading1: bodini;
+
+    --fs-xs: 15px;
+    --fs-s: 17px;
+    --fs-m: 21px;
+    --fs-l: 30px;
+    --fs-xl: 2.5rem;
+    --fs-xxl: 3.5rem;
+
+    --c-background: #2C2B2B;
+    --c-text: #DCEDDB;
+    --c-green-dark: #547361;
+    --c-green-light: #74875B;
+    --c-gold: #D4AF37;
+}
+
+body {
+    background-color: var(--c-background);
+}
+
+a {
+    text-decoration: none;
+    color: var(--c-text);
+}
+
+a:hover {
+    color: var(--c-gold);
+    text-decoration: underline;
+    text-underline-offset: 1rem;
+    text-decoration-thickness: 0.2rem;
+}
+
+.navigation {
+    padding: 2rem 3rem;
+    background-color: var(--c-background);
+}
+
+.navigation__list {
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+    font-size: var(--fs-s);
+    color: var(--c-text);
+    font-family: var(--ff-text);
+    list-style: none;
+}
+
+.welkome {
+    color: var(--c-gold);
+    font-family: var(--ff-heading1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    text-align: center;
+    line-height: 60%;
+}
+
+.welkome__titel {
+    font-size: var(--fs-xxl);
+}
+
+.welkome__text {
+    font-size: var(--fs-l);
+}

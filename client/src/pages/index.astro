@@ -1,5 +1,5 @@
 ---
-
+import "../style/globel.css";
 ---
 
 <html lang="en">
@@ -8,9 +8,34 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>My Portfolio</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<header>
+			<nav class="navigation">
+				<ul class="navigation__list">
+					<li class="navigation__list-item"><a href="#">Home</a></li>
+					<li class="navigation__list-item">
+						<a href="/about/">About me</a>
+					</li>
+					<li class="navigation__list-item">
+						<a href="/portfolio/">My work</a>
+					</li>
+					<li class="navigation__list-item">
+						<a href="#">Contact</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<section class="welkome">
+				<div>
+					<h1 class="welkome__titel">Hi, I'm Silke</h1>
+					<p class="welkome__text">
+						iam a student at howest and i love to desing
+					</p>
+				</div>
+			</section>
+		</main>
 	</body>
 </html>
