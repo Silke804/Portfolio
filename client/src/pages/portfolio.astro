@@ -1,21 +1,24 @@
 ---
 import "../style/globel.css";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+const pageTitle = "My Portfolio";
 ---
 
-<header>
-<nav class="navigation">
-    <ul class="navigation__list">
-        <li class="navigation__list-item"><a href="/">Home</a></li>
-        <li class="navigation__list-item">
-            <a href="#">About me</a>
-        </li>
-        <li class="navigation__list-item">
-            <a href="/portfolio/">My work</a>
-        </li>
-        <li class="navigation__list-item">
-            <a href="#">Contact</a>
-        </li>
-    </ul>
-</nav>
-
-<h1>Portfolio</h1>
+<body>
+    <header>
+        <Navigation horizontal={true} />
+    </header>
+    <main>
+        <section class="welkome">
+            <div>
+                <h1 class="welkome__titel">{pageTitle}</h1>
+                <p class="welkome__text">Explore my projects and artworks</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p id="contact"></p>
+        <Footer />
+    </footer>
+</body>

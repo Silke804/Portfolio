@@ -1,0 +1,23 @@
+---
+import "../style/globel.css";
+const { horizontal } = Astro.props;
+---
+
+<nav>
+    <ul
+        class={`navigation navigation__list ${horizontal ? "horizontal" : "vertical"}`}
+    >
+        <li class="navigation__list-item">
+            <a href="/">Home</a>
+        </li>
+        <li class="navigation__list-item">
+            <a href="/about/">About me</a>
+        </li>
+        <li class="navigation__list-item">
+            <a href="/portfolio/">My work</a>
+        </li>
+        <li class="navigation__list-item">
+            <a href="#contact">Contact</a>
+        </li>
+    </ul>
+</nav>

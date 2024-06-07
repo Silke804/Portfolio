@@ -1,6 +1,6 @@
 ~ Home Page
 
-*  Introduction: A brief, engaging introduction about who you are.
+* Introduction: A brief, engaging introduction about who you are.
 * Hero Image/Banner: A high-quality image or graphic that represents you or your work.
 * Navigation Menu: Links to other sections of your portfolio (About, Projects, Contact, etc.).
 * Call to Action: A button or link to view your work or contact you.

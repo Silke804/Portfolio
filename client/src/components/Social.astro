@@ -1,0 +1,13 @@
+---
+const { platform, username, img } = Astro.props;
+---
+
+<a href={`https://${platform}/${username}`}>
+    <img class="Footer_img Footer_img-social" src={img} alt={platform} />
+</a>
+
+<style>
+    a {
+        text-decoration: none;
+    }
+</style>
