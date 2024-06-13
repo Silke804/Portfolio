@@ -1,35 +1,25 @@
 ---
 import "../style/globel.css";
-import Navigation from "../components/Navigation.astro";
-import Footer from "../components/Footer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
+<html lang="en" id="top">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<link rel="stylesheet" href="https://use.typekit.net/alk4gzt.css" />
 		<title>My Portfolio</title>
 	</head>
 
 	<body>
-		<header>
-			<Navigation horizontal={true} />
-		</header>
-
 		<main>
-			<section class="welkome">
-				<div>
-					<h1 class="welkome__titel">Hi, I'm Silke</h1>
-					<p class="welkome__text">Welcome to my art portfolio.</p>
-				</div>
-			</section>
+			<BaseLayout
+				pageTitleH1="Hello,"
+				pageTitleH2="I'm Silke"
+				pageText="Welcome to my art portfolio."
+			/>
 		</main>
-
-		<footer>
-			<p id="contact"></p>
-			<Footer />
-		</footer>
 	</body>
 </html>

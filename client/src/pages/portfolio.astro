@@ -1,24 +1,16 @@
 ---
 import "../style/globel.css";
-import Navigation from "../components/Navigation.astro";
-import Footer from "../components/Footer.astro";
-const pageTitle = "My Portfolio";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <body>
-    <header>
-        <Navigation horizontal={true} />
-    </header>
     <main>
-        <section class="welkome">
-            <div>
-                <h1 class="welkome__titel">{pageTitle}</h1>
-                <p class="welkome__text">Explore my projects and artworks</p>
-            </div>
-        </section>
+        <BaseLayout
+            pageTitleH1="Discover "
+            pageTitleH2="My Portfolio"
+            pageText="Explore my projects and artworks"
+        >
+            <a href="/sources/source-1/">Bronnen</a>
+        </BaseLayout>
     </main>
-    <footer>
-        <p id="contact"></p>
-        <Footer />
-    </footer>
 </body>

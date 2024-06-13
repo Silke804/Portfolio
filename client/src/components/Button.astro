@@ -1,0 +1,59 @@
+---
+const { alignment, button_text, button_url } = Astro.props;
+const alignmentClass =
+    alignment === "start" ? "start" : alignment === "center" ? "center" : "end";
+import "../style/globel.css";
+---
+
+<div class={`button-container ${alignmentClass}`}>
+    <a class="button" href={`${button_url}`}>{button_text}</a>
+</div>
+
+<style>
+    .button-container {
+        display: flex;
+    }
+
+    .button-container.start {
+        justify-content: flex-start;
+        margin-left: 2rem;
+    }
+
+    .button-container.center {
+        justify-content: center;
+    }
+
+    .button-container.end {
+        justify-content: flex-end;
+        margin-right: 2rem;
+    }
+
+    .button {
+        background-color: var(--c-background);
+        border: 2px solid var(--c-green-dark);
+        border-radius: 1rem;
+        box-sizing: border-box;
+        color: var(--c-green-dark);
+        cursor: pointer;
+        text-align: center;
+        padding: 0.8rem 1.3rem;
+        font-size: var(--fs-xs);
+    }
+    a {
+        color: var(--c-green-dark);
+    }
+    .button:hover {
+        color: var(--c-gold);
+        border: 2px solid var(--c-gold);
+    }
+    .button:active {
+        color: var(--c-green-light);
+        border: 2px solid var(--c-green-light);
+    }
+
+    @media (max-width: 768px) {
+        .button {
+            padding: 0.8rem 1rem;
+        }
+    }
+</style>

@@ -36,3 +36,8 @@
 * Contact Information: Your email, phone number, and any other relevant contact details.
 * Social Media Links: Links to your profiles on LinkedIn, Twitter, GitHub, etc.
 * Location Map: (Optional) If relevant, embed a map of your location.
+
+----
+
+# To Do
+* hamburger navigatie verticaal ipv horizontaal

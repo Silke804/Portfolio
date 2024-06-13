@@ -1,0 +1,21 @@
+---
+import Navigation from "../components/Navigation.astro";
+import "../style/globel.css";
+---
+
+<body>
+    <div class="hamburger-container">
+        <div class="hamburger-navigation">
+            <Navigation horizontal={true} />
+        </div>
+        <div class="hamburger-bar">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
+
+    <script>
+        import "../scripts/menu.js";
+    </script>
+</body>

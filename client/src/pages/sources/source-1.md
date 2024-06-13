@@ -1,14 +1,16 @@
 ---
+layout: ../../layouts/SourcesLayout.astro
 title: 'Source list'
 pubDate: 2024-07-01
 description: 'This is a list of all my source files.'
 author: 'Silke Van den Brempt'
 tags: ["Bron", "School"]
+
 ---
-[Back](../index.html)
-# Academie year
-## Year: 2018-2022
-### 2018-2019 ###
+<!-- [Back](/portfolio/) -->
+## Academie year
+### Year: 2018-2022
+#### 2018-2019 ####
 - ***2018-2019***
     - Photography 
         1. bron
@@ -18,7 +20,7 @@ tags: ["Bron", "School"]
         1. bron 
     - Graphic design
         1. bron 
-### 2019-2020 ###
+#### 2019-2020 ####
 - ***2019-2020***
     - Photography 
         1. bron
@@ -28,7 +30,7 @@ tags: ["Bron", "School"]
         1. bron 
     - Graphic design
         1. bron 
-### 2020-2021 ###
+#### 2020-2021 ####
 - ***2020-2021***
     - Photography 
         1. bron
@@ -38,7 +40,7 @@ tags: ["Bron", "School"]
         1. bron 
     - Graphic design
         1. bron 
-### 2021-2022 ###
+#### 2021-2022 ####
 - ***2021-2022***
     - Photography 
         1. bron
@@ -51,9 +53,9 @@ tags: ["Bron", "School"]
     - Gip (final work)
         1. bron
 
-# Devine year
-## Year: 2022-2026
-### 2022-2023 ###
+## Devine year
+### Year: 2022-2026
+#### 2022-2023 ####
 - ***2022-2023***
     - Web 1
         1. bron
@@ -72,7 +74,7 @@ tags: ["Bron", "School"]
     - Ux 2
         1. bron 
 
-### 2023-2024 ###
+#### 2023-2024 ####
 - ***2023-2024***
     - Web 3
         1. bron
@@ -91,14 +93,14 @@ tags: ["Bron", "School"]
     - Ux 4
         1. bron 
 
-### 2024-2025 ###
+#### 2024-2025 ####
 - ***2024-2025***
     - Web 4
         1. bron
     - Creative code 4
         1. bron
    
-### 2025-2026 ###
+#### 2025-2026 ####
 - ***2025-2026***
     - Stage
         1. bron 
@@ -124,11 +126,18 @@ tags: ["Bron", "School"]
 
 body{
     margin: 3rem 3rem;
-    background-color: var(--c-background)
+    background-color: var(--c-background);
+}
+h1{
+    display: flex;
+    justify-content: center;
+    font-size:var(--fs-xl);
+    color:var(--c-text);  
+    /* margin-top: -3rem  */
 }
 
-h1{
-    color:var(--c-text);
+h2{
+    color:var(--c-text);  
 }
 
 a{
@@ -157,16 +166,17 @@ p{
     margin-left:0.8rem;
     margin-bottom:3rem
 }
-h2{
-font-size:var(--fs-s);
-color:var(--c-gold);
-margin-left:0.8rem;
-margin-top:-1rem;
-margin-bottom: 5rem;
-font-style:oblique;
-}
 
 h3{
+    font-size:var(--fs-s);
+    color:var(--c-gold);
+    margin-left:0.8rem;
+    margin-top:-1rem;
+    margin-bottom: 5rem;
+    font-style:oblique;
+}
+
+h4{
     position:absolute;
     margin-top:-1.4rem;
     margin-left:4rem;
@@ -175,7 +185,7 @@ h3{
     color: var(--c-gold);
     font-family:var(--ff-text);
     padding: 0.5rem;
-    font-size:var(--fs-m)
+    font-size:var(--fs-m);
 }
 
 strong{
@@ -185,21 +195,22 @@ strong{
 /* niveau one */
 ul > li {
     font-weight: bold;
-    border-style: solid;
-    border-width:0.1rem;
-    border-color: var(--c-gold);
-    margin-bottom: 3rem;  
+    border: 2px solid var(--c-green-dark);
+    border-radius: 1rem;
+    margin-bottom: 5rem;  
     padding-top:0.5rem; 
     list-style:none;  
+    box-shadow: 15px 15px 20px -10px var(--c-green-dark);
 }
 
 /* niveau two */
 ul > li > ul > li,
 ul > li > ol > li {
-    color: var(--c-green-light);
+    color: var(--c-green-dark);
     font-style: italic;
     border:none;
     margin-top:1rem;
+    box-shadow: none;
 }
 
 /* niveau three */

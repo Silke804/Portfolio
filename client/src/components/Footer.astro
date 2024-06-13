@@ -1,9 +1,11 @@
 ---
 import Social from "./Social.astro";
 import Navigation from "../components/Navigation.astro";
+import Button from "../components/Button.astro";
 ---
 
-<section class="Footer" >
+<Button button_url="#top" button_text="Go to top" alignment="end" />
+<section class="Footer">
     <p class="Footer_titel">Contact me</p>
     <div class="Footer_section-1">
         <img class="Footer_img" src="/public/me.jpg" alt="Me" />
@@ -12,25 +14,25 @@ import Navigation from "../components/Navigation.astro";
             <Social
                 platform="m.me"
                 username="silke.vandenbrempt"
-                img="/public/messenger.png"
+                img="/messenger.png"
             />
             <Social
                 class="instagram"
                 platform="instagram.com"
                 username="silke_love_art"
-                img="/public/instagram.png"
+                img="/instagram.png"
             />
             <Social
                 platform="wa.me"
                 username="+32498434335"
-                img="/public/whatsApp.png"
+                img="/whatsApp.png"
             />
         </div>
     </div>
     <div class="Footer_section-2">
-        <p>Email:</p><p>silke.vandenbrempt@gmail.com</p>
-        <p>Phone:</p><p>+32498434335</p>
-        <p>Address:</p><p>9320 Aalst, Belgium</p>
+        <p class="strong">Email:</p><p>silke.vandenbrempt@gmail.com</p>
+        <p class="strong">Phone:</p><p>+32498434335</p>
+        <p class="strong">Address:</p><p>9320 Aalst, Belgium</p>
     </div>
     <div>
         <Navigation horizontal={false} />

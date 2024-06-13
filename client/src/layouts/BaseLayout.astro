@@ -1,0 +1,28 @@
+---
+import "../style/globel.css";
+import Hamburger from "../components/Hamburger.astro";
+import Footer from "../components/Footer.astro";
+const { pageTitleH1, pageTitleH2, pageText } = Astro.props;
+---
+
+<body>
+    <header>
+        <Hamburger />
+    </header>
+
+    <main>
+        <section class="welkome">
+            <div>
+                <h1 class="welkome__h1 bodoni">{pageTitleH1}</h1><br />
+                <h2 class="welkome__h2 autography">{pageTitleH2}</h2>
+                <p class="welkome__text avenir">{pageText}</p>
+            </div>
+            <div class="welkome__background"></div>
+        </section>
+        <slot />
+    </main>
+    <footer>
+        <p id="contact"></p>
+        <Footer />
+    </footer>
+</body>
