@@ -24,10 +24,37 @@
     --c-gold: #D4AF37;
 }
 
-.bodoni {
+/* -------text--------- */
+.bodoni,
+.title_line {
     color: var(--c-text);
     font-family: "ltc-bodoni-175";
     font-weight: 100;
+    font-size: var(--fs-xl);
+    letter-spacing: 1rem;
+}
+
+.title_line {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    text-align: center;
+    margin-top: 8rem;
+}
+
+.title_line:before,
+.title_line:after {
+    position: absolute;
+    top: 51%;
+    width: 48%;
+    height: 1.5px;
+    content: '\a0';
+    background-color: var(--c-gold);
+    margin-left: 2%;
+}
+
+.title_line:before {
+    margin-left: -50%;
 }
 
 .avenir {
@@ -40,7 +67,6 @@
     color: var(--c-gold);
     font-family: autography;
     font-weight: 200;
-    /* font-size: var(--fs-xl); */
 }
 
 p,
@@ -61,6 +87,7 @@ a {
     color: var(--c-text);
 }
 
+/* -------Navigation--------- */
 .navigation__list-item:hover {
     color: var(--c-gold);
     text-decoration: underline;
@@ -125,7 +152,7 @@ a {
     }
 }
 
-/* --------- */
+/* ---- Layout----- */
 .welkome {
     color: var(--c-gold);
     display: flex;
@@ -163,7 +190,7 @@ a {
 .welkome__text {
     font-size: var(--fs-l);
     background-color: var(--c-background);
-    border: 5px solid var(--c-green-dark);
+    border: 3px solid var(--c-green-dark);
     border-radius: 1rem;
     box-sizing: border-box;
     color: var(--c-green-dark);
@@ -177,6 +204,7 @@ img {
     height: auto;
 }
 
+/* -------Footer--------- */
 .Footer {
     padding: 2rem 3rem;
     background-color: var(--c-black);
@@ -231,14 +259,14 @@ img {
 
 .Footer_section-2 {
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 30% 80%;
     grid-template-rows: 2rem 2rem 2rem;
     margin-left: 7rem;
     margin-top: 2rem;
     color: var(--c-text);
 }
 
-/* -------- */
+/* -------media--------- */
 @media (max-width: 800px) {
     .hamburger-container {
         background-color: var(--c-black);

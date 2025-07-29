@@ -2,7 +2,7 @@
 const { alignment, button_text, button_url } = Astro.props;
 const alignmentClass =
     alignment === "start" ? "start" : alignment === "center" ? "center" : "end";
-import "../style/globel.css";
+import "../style/baseLayout.css";
 ---
 
 <div class={`button-container ${alignmentClass}`}>
