@@ -1,6 +1,9 @@
 ---
 import "../style/baseLayout.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { projectData } from "../scripts/data.js";
+import Project from "../components/ProjectCard.astro";
+
 ---
 
 <body>
@@ -11,6 +14,24 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             pageText="Explore my projects and artworks"
         >
             <a href="/sources/source-1/">Bronnen</a>
+
+            <section class="bg-gray-50 px-6 py-10">
+                <div class="max-w-screen-xl mx-auto">
+                    <h1 class="text-3xl font-bold mb-8 text-center">
+                        My Projects
+                    </h1>
+                    <div class="card-grid">
+                        <!-- {
+                            projectData.map((project) => (
+                                <ProjectCard {...project} />
+                            ))
+                        } -->
+                        <Project/>
+                    </div>
+                </div>
+            </section>
+
         </BaseLayout>
-    </main>
-</body>
+     
+    </main></body
+>

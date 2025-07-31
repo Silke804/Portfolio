@@ -1,0 +1,89 @@
+---
+const { id, label, options, name, tools } = Astro.props;
+---
+
+<div class="form_dropdown">
+    <button
+        type="button"
+        class="dropdown-button"
+        id={`${Astro.props.id}DropdownButton`}
+    >
+        {Astro.props.label} ▼
+        <span class="selected-values" id={`selected${Astro.props.id}Text`}>
+        </span>
+    </button>
+    <div
+        class="dropdown-menu"
+        id={`${Astro.props.id}Checkboxes`}
+        style="display:none;"
+    >
+        {
+            options.map((option) => (
+                <label>
+                    <input
+                        type="checkbox"
+                        name={Astro.props.name}
+                        value={option}
+                    />
+                    {option}
+                </label>
+            ))
+        }
+    </div>
+</div>
+<style>
+    .hidden {
+        display: none;
+    }
+
+    .dropdown-button {
+        all: unset; /* reset alles */
+        cursor: pointer; /* cursor blijft pointer */
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+        background: none;
+        border: none;
+        font: inherit; /* neemt lettertype van container */
+        color: inherit; /* neemt kleur van container */
+    }
+
+    .form_dropdown {
+        position: relative;
+        display: inline-block;
+        font-family: Arial, sans-serif;
+    }
+
+    .dropdown-button {
+        all: unset;
+        cursor: pointer;
+        border-radius: 4px;
+        user-select: none;
+        min-width: 130px;
+        box-sizing: border-box;
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: border-color 0.3s ease;
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        max-height: 180px;
+        overflow-y: auto;
+        background: rgb(103, 103, 103);
+        padding: 8px 12px;
+        box-sizing: border-box;
+        z-index: 1000;
+    }
+
+    .dropdown-menu label {
+        display: flex;
+        align-items: center;
+        padding: 4px 0;
+        cursor: pointer;
+    }
+</style>

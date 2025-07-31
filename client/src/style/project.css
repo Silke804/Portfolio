@@ -1,0 +1,150 @@
+.hero_container {
+    margin-bottom: 10rem;
+}
+
+.collection_tittel {
+    display: flex;
+    justify-content: center;
+    font-size: var(--fs-l);
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+    margin-top: 5rem;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 6% auto 0;
+}
+
+.single-card {
+    position: relative;
+    width: 280px;
+    height: 400px;
+    margin: 15px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: var(--c-purple);
+    display: grid;
+    grid-template-rows: 40% 60%;
+}
+
+.img-area {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+}
+
+.img-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info {
+    display: grid;
+    grid-template-rows: 20% 110px 20%;
+    grid-template-columns: 50% 50%;
+    gap: 10px;
+    padding: 10px;
+    justify-content: space-between;
+    flex-grow: 1;
+    align-items: center;
+    text-align: center;
+    color: aliceblue;
+}
+
+.info_role {
+    font-size: 11px;
+
+}
+
+.info_naam {
+    grid-column: 1/3;
+    margin: 15px 0px 10px;
+    font-size: var(--fs-s);
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 0rem 1rem;
+}
+
+.info_description-titel {
+    font-weight: bold;
+    font-size: var(--fs-xs);
+    margin-top: 0px;
+}
+
+.info_description {
+    grid-column: 1/3;
+    font-size: var(--fs-xs);
+    padding: 0rem 1rem;
+    text-align: left;
+    align-self: start;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    /* Max 4 regels */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.badge {
+    position: absolute;
+    top: 20px;
+    right: -43px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100px;
+    text-align: center;
+    padding: 5px 37px;
+    transform: rotate(45deg);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    line-height: 1.2;
+    z-index: 4;
+    background-color: var(--c-background);
+}
+
+.year-2020-2021 {
+    background-color: blue;
+}
+
+.year-2021-2022 {
+    background-color: green;
+}
+
+.year-2022-2023 {
+    background-color: orange;
+}
+
+.year-2023-2024 {
+    background-color: purple;
+}
+
+.form_filters {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    gap: 3rem;
+}
+
+.form_dropdown {
+    padding: 5px 15px;
+    border: 3px solid var(--c-purple);
+    border-radius: 5px;
+    background-color: var(--c-bg);
+    font-size: 14px;
+    color: var(--c-dark);
+}
+
+.dropdown_item {
+    background-color: #000;
+}

@@ -1,0 +1,281 @@
+---
+import Button from "../components/Button.astro";
+import "../style/project.css";
+import { projectData } from "../scripts/data.js";
+// import { Image } from "@astrojs/image/components";
+
+import Dropdown from "../components/Dropdown.astro";
+
+// Unieke waarden uit je projectData halen
+const years = [
+    ...new Set(
+        projectData
+            .map((p) => p.filters?.year?.[0])
+            .filter((y) => y && y.toLowerCase() !== "unknown"),
+    ),
+];
+
+const roles = [
+    ...new Set(
+        projectData
+            .flatMap((p) => p.filters?.role || [])
+            .filter((r) => r && r.toLowerCase() !== "unknown"),
+    ),
+];
+
+const types = [
+    ...new Set(
+        projectData
+            .flatMap((p) => p.filters?.projectType || [])
+            .filter((t) => t && t.toLowerCase() !== "unknown"),
+    ),
+];
+const tools = [
+    ...new Set(
+        projectData
+            .flatMap((p) => p.filters?.tools || [])
+            .filter((t) => t && t.toLowerCase() !== "unknown"),
+    ),
+];
+---
+
+<form id="filterForm" class="form">
+    <div class="form_filters">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search by name..."
+            class="search-input"
+        />
+        <Dropdown id="Year" label="Select Years" options={years} name="year" />
+
+        <Dropdown id="Role" label="Select Roles" options={roles} name="role" />
+
+        <Dropdown id="Type" label="Select Types" options={types} name="type" />
+        <Dropdown
+            id="Tools"
+            label="Select Tools"
+            options={tools}
+            name="tools"
+        />
+    </div>
+</form>
+
+<section>
+    <div class="wrapper">
+        <div
+            id="noResultsMessage"
+            class="no-results-message"
+            style="display: none;"
+        >
+        </div>
+        {
+            projectData.map((project) => {
+                const rawYear = project.filters?.year?.[0] || "unknown";
+                const rawTypeOriginal =
+                    project.filters?.projectType?.[0] || "unknown";
+                const rawType = rawTypeOriginal
+                    .toLowerCase()
+                    .replace(/\s+/g, "-");
+                const showBadge = rawYear.toLowerCase() !== "unknown";
+                const yearClass = showBadge ? `year-${rawYear}` : "";
+                const typeClass = `type-${rawType}`;
+
+                return (
+                    <div
+                        id={`item-${project.title}`}
+                        class={`single-card ${typeClass}`}
+                        data-year={rawYear.toLowerCase()}
+                        data-role={JSON.stringify(
+                            project.filters?.role?.map((r) =>
+                                r.toLowerCase(),
+                            ) || [],
+                        )}
+                        data-type={rawType}
+                        data-tools={JSON.stringify(
+                            project.filters?.tools?.map((t) =>
+                                t.toLowerCase(),
+                            ) || [],
+                        )}
+                    >
+                        {showBadge && (
+                            <span class={`badge ${yearClass}`}>{rawYear}</span>
+                        )}
+
+                        <div class="img-area">
+                            {/* <Image
+                                src={
+                                    project.image?.url
+                                        ? project.image.url
+                                        : "/images/none.jpg"
+                                }
+                                alt={project.title || "No title available"}
+                                width="400"
+                                height="400"
+                                format="avif"
+                            /> */}
+                        </div>
+                        <div class="info">
+                            <h3 class="info_naam">
+                                {project.title || "No title available"}
+                            </h3>
+                            <p class="info_description">
+                                <strong>
+                                    Assigment: <br />
+                                </strong>
+                                {project.description}
+                            </p>
+                            <p class="info_role">
+                                {project.filters?.role?.map((role) => (
+                                    <span>
+                                        {role}
+                                        <br />
+                                    </span>
+                                ))}
+                            </p>
+                            <Button
+                                button_url={`/collection/${project.slug}`}
+                                button_text="See more"
+                                alignment="center"
+                                backgroundColor="background"
+                                textColor="text"
+                                borderColor="purple"
+                                useHistoryApi={false}
+                            />
+                        </div>
+                    </div>
+                );
+            })
+        }
+    </div>
+</section>
+<script is:client>
+    const dropdowns = ["Year", "Role", "Type", "Tools"];
+    const searchInput = document.getElementById("searchInput");
+    const allProjects = document.querySelectorAll(".single-card");
+    const noResultsMessage = document.getElementById("noResultsMessage");
+
+    function filterProjects() {
+        const searchQuery = searchInput.value.toLowerCase();
+        const selectedFilters = {
+            role: getSelectedValues("Role"),
+            year: getSelectedValues("Year"),
+            type: getSelectedValues("Type"),
+            tools: getSelectedValues("Tools"),
+        };
+
+        let resultsFound = false;
+
+        allProjects.forEach((project) => {
+            const projectTitle = project
+                .querySelector(".info_naam")
+                .textContent.toLowerCase();
+            const projectYear = project.dataset.year;
+            const projectRole = JSON.parse(project.dataset.role);
+            const projectType = project.dataset.type;
+            const projectTools = JSON.parse(project.dataset.tools);
+
+            const matchesSearch = projectTitle.includes(searchQuery);
+            const matchesYear =
+                selectedFilters.year.length === 0 ||
+                selectedFilters.year.includes(projectYear);
+            const matchesRole =
+                selectedFilters.role.length === 0 ||
+                selectedFilters.role.some((r) => projectRole.includes(r));
+            const matchesType =
+                selectedFilters.type.length === 0 ||
+                selectedFilters.type.includes(projectType);
+            const matchesTools =
+                selectedFilters.tools.length === 0 ||
+                selectedFilters.tools.some((tool) =>
+                    projectTools.includes(tool),
+                );
+            if (
+                matchesSearch &&
+                matchesYear &&
+                matchesRole &&
+                matchesType &&
+                matchesTools
+            ) {
+                project.style.display = "block";
+                resultsFound = true;
+            } else {
+                project.style.display = "none";
+            }
+        });
+
+        noResultsMessage.style.display = resultsFound ? "none" : "block";
+        if (!resultsFound) {
+            noResultsMessage.textContent =
+                "No projects found matching your criteria.";
+        }
+    }
+
+    function getSelectedValues(id) {
+        const menu = document.getElementById(`${id}Checkboxes`);
+        const checkboxes = menu.querySelectorAll(
+            `input[name="${id.toLowerCase()}"]`,
+        );
+        return Array.from(checkboxes)
+            .filter((cb) => cb.checked)
+            .map((cb) => cb.value.toLowerCase());
+    }
+
+    // Initialize dropdowns and their events
+    dropdowns.forEach((id) => {
+        const button = document.getElementById(`${id}DropdownButton`);
+        const menu = document.getElementById(`${id}Checkboxes`);
+        const selectedText = document.getElementById(`selected${id}Text`);
+        const checkboxes = menu.querySelectorAll(
+            `input[name="${id.toLowerCase()}"]`,
+        );
+
+        // Open/close dropdown on button click
+        button.addEventListener("click", (e) => {
+            e.stopPropagation();
+            document.querySelectorAll(".dropdown-menu").forEach((m) => {
+                if (m !== menu) m.style.display = "none";
+            });
+            menu.style.display =
+                menu.style.display === "block" ? "none" : "block";
+        });
+
+        checkboxes.forEach((checkbox) => {
+            checkbox.addEventListener("change", () => {
+                const selected = Array.from(checkboxes)
+                    .filter((cb) => cb.checked)
+                    .map((cb) => cb.value);
+
+                selectedText.textContent = selected.length
+                    ? selected.join(", ")
+                    : "(none)";
+                filterProjects();
+            });
+        });
+    });
+
+    // Close dropdowns if click outside
+    document.addEventListener("click", () => {
+        document.querySelectorAll(".dropdown-menu").forEach((menu) => {
+            menu.style.display = "none";
+        });
+    });
+
+    // Search input event
+    searchInput.addEventListener("input", filterProjects);
+
+    // Initial filtering on page load
+    filterProjects();
+</script>
+<style>
+    .single-card.type-school-project {
+        background-color: #8476b4; /* lichtgroen */
+    }
+
+    .single-card.type-prive {
+        background-color: #136948; /* lichtroze */
+    }
+    .single-card.type-solo-project {
+        background-color: #c93899; /* lichtroze */
+    }
+</style>

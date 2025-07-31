@@ -1,45 +1,49 @@
-// src/data/projectData.js
-
 export const projectData = [
     {
         id: "1",
-        title: "Portfolio Website",
-        assignment: "Build a personal portfolio site",
-        yourRole: "UX/UI Designer & Frontend Developer",
-        subject: "Interactive Design",
-        category: "Portfolio",
-        toolsMethods: ["Figma", "HTML", "CSS", "Astro"],
+        title: "Coctail App",
+        description: "A mobile app for cocktail recipes ezuky(vlk ruytvbke htrieuy§vez thzekuy§vheuz teuyvhe hteruyvneq hgeiuvntel gerib§nt ergheirl yerkjht ieyeriyt ertigy",
+        assignment: "Mix Box",
+        filters: {
+            projectType: ["School project"],
+            role: ["UX/UI Designer", "Visual Designer"],
+            subject: ["Design"],
+            tools: ["Figma", "Wireframing"],
+            year: ["2020-2021"]
+        },
+        deliverables: ["Wireframe", "Mockup", "Final Design"],
         processSteps: [
             "/images/wireframe1.jpg",
             "/images/mockup1.jpg",
             "/images/final1.jpg"
         ],
         liveLinks: [
-            { type: "Live", url: "https://example.com" },
+            { type: "Figma", url: "https://example.com" },
             { type: "GitHub", url: "https://github.com/username/project1" }
         ],
-        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-        reflection: "Navigation worked well, but the mobile layout could be improved."
-    },
-    {
-        id: "2",
-        title: "App Redesign",
-        assignment: "Redesign an existing app",
-        yourRole: "Product Designer",
-        subject: "Mobile UX",
-        category: "Redesign",
-        toolsMethods: ["Sketch", "Prototyping", "Motion Design"],
+        reflection: "Navigation worked well, but the mobile layout could be improved.",
+    }, {
+        id: "1",
+        title: " dragon App",
+        description: "A mobile app for cocktail",
+        assignment: "Mix Box",
+        filters: {
+            projectType: ["Solo project"],
+            role: ["Visual Designer", "Developer"],
+            subject: ["Design"],
+            tools: ["Figma", "Wireframing"],
+            year: ["2020-2022"]
+        },
+        deliverables: ["Wireframe", "Mockup", "Final Design"],
         processSteps: [
-            "/images/sketch.jpg",
-            "/images/prototype.jpg",
-            "/images/final-app.jpg"
+            "/images/wireframe1.jpg",
+            "/images/mockup1.jpg",
+            "/images/final1.jpg"
         ],
         liveLinks: [
-            { type: "Demo", url: "https://figma.com/proto/demo" }
+            { type: "Figma", url: "https://example.com" },
+            { type: "GitHub", url: "https://github.com/username/project1" }
         ],
-        videoUrl: "",
-        reflection: "Nice transitions, but the onboarding was unclear for users."
-    },
-    // Add more projects as needed...
+        reflection: "Navigation worked well, but the mobile layout could be improved.",
+    }
 ];
-  
