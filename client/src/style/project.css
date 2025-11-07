@@ -1,14 +1,22 @@
-.hero_container {
-    margin-bottom: 10rem;
+:root {
+    --fs-xs: 15px;
+    --fs-s: 19px;
+    --fs-m: 25px;
+    --fs-l: 35px;
+    --fs-xl: 3rem;
+    --fs-xxl: 4.5rem;
+
+    --c-purple: #817191;
+    --c-black: #191919;
+    --c-background: #2C2B2B;
+    --c-text: #DCEDDB;
+    --c-green-dark: #547361;
+    --c-green-light: #74875B;
+    --c-gold: #D4AF37;
 }
 
-.collection_tittel {
-    display: flex;
-    justify-content: center;
-    font-size: var(--fs-l);
-    border-bottom: 2px solid #000;
-    padding-bottom: 10px;
-    margin-top: 5rem;
+.hero_container {
+    margin-bottom: 10rem;
 }
 
 .wrapper {
@@ -21,15 +29,15 @@
 
 .single-card {
     position: relative;
-    width: 280px;
+    width: 300px;
     height: 400px;
     margin: 15px;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
     overflow: hidden;
-    background-color: var(--c-purple);
     display: grid;
     grid-template-rows: 40% 60%;
+    background-color: var(--c-black);
 }
 
 .img-area {
@@ -55,11 +63,13 @@
     flex-grow: 1;
     align-items: center;
     text-align: center;
-    color: aliceblue;
+    color: var(--c-text);
 }
 
 .info_role {
     font-size: 11px;
+    text-align: left;
+    margin-left: 1.5rem;
 
 }
 
@@ -97,7 +107,7 @@
     position: absolute;
     top: 20px;
     right: -43px;
-    color: white;
+    color: var(--c-text);
     font-size: 16px;
     font-weight: bold;
     width: 100px;
@@ -110,21 +120,36 @@
     background-color: var(--c-background);
 }
 
-.year-2020-2021 {
-    background-color: blue;
-}
-
+.year-2018-2019,
+.year-2019-2020,
+.year-2020-2021,
 .year-2021-2022 {
-    background-color: green;
+    background-color: var(--c-black);
+    color: var(--c-text);
 }
 
-.year-2022-2023 {
-    background-color: orange;
+.year-2022-2023,
+.year-2023-2024,
+.year-2024-2025 {
+    background-color: var(--c-text);
+    color: var(--c-black);
 }
 
-.year-2023-2024 {
-    background-color: purple;
+.single-card.type-school-project {
+    background-color: var(--c-green-dark);
 }
+
+.single-card.type-prive {
+    background-color: var(--c-purple);
+}
+
+/* .single-card.type-solo-project {
+    background-color: var(--c-green-light);
+}
+
+.single-card.type-team-project {
+    background-color: var(--c-gold);
+} */
 
 .form_filters {
     display: flex;
@@ -140,11 +165,9 @@
     padding: 5px 15px;
     border: 3px solid var(--c-purple);
     border-radius: 5px;
-    background-color: var(--c-bg);
     font-size: 14px;
-    color: var(--c-dark);
 }
 
 .dropdown_item {
-    background-color: #000;
+    background-color: var(--c-background);
 }

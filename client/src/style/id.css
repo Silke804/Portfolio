@@ -1,0 +1,235 @@
+:root {
+    --fs-xs: 15px;
+    --fs-s: 19px;
+    --fs-m: 25px;
+    --fs-l: 30px;
+    --fs-xl: 3rem;
+    --fs-xxl: 4.5rem;
+
+    --c-black: #191919;
+    --c-background: #2C2B2B;
+    --c-text: #DCEDDB;
+    --c-green-dark: #547361;
+    --c-green-light: #74875B;
+    --c-gold: #D4AF37;
+}
+
+body {
+    padding: 2rem;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    color: var(--c-text);
+    margin-bottom: 5rem;
+}
+
+h1,
+h2 {
+    font-weight: 600;
+    color: #111;
+}
+
+h1 {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+    color: var(--c-green-light);
+}
+
+h2 {
+    font-size: var(--fs-l);
+    margin-bottom: 1rem;
+    margin-top: 2.5rem;
+    color: var(--c-green-dark);
+}
+
+p {
+    font-size: var(--fs-s);
+    line-height: 1.6;
+    color: var(--c-text);
+}
+
+.project_info {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 3rem;
+    grid-template-rows: 1fr 50%;
+}
+
+.project-image {
+    grid-column: 2;
+    grid-row: 1/3;
+}
+
+.reflection-section,
+.process_grid {
+    margin-top: 4rem;
+}
+
+.project-details {
+    position: relative;
+    display: inline-block;
+    max-width: 500px;
+    align-self: center;
+}
+
+.project-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+}
+
+.project-tag {
+    color: #fff;
+    font-size: var(--fs-s);
+    font-weight: 500;
+    padding: 0.3rem 0.7rem;
+    white-space: nowrap;
+
+}
+
+.badge {
+    background-color: var(--c-background);
+    position: absolute;
+    top: 40px;
+    right: -50px;
+    color: var(--c-text);
+    font-size: var(--fs-s);
+    font-weight: bold;
+    text-align: center;
+    padding: 5px 37px;
+    transform: rotate(45deg);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    line-height: 1.2;
+    z-index: 4;
+}
+
+/* -------- proces -------- */
+.process_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+    align-items: stretch;
+}
+
+.proces_tittel {
+    grid-column: 1 / -1;
+}
+
+.img-item {
+    min-width: 300px;
+    max-width: 500px;
+    background: #3e584d;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    margin: 0rem;
+}
+
+.img-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+.img-item:active {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+    transform: scale(2.5);
+    z-index: 10;
+}
+
+.img-top {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.img-top img,
+.img-top iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: none;
+    display: block;
+}
+
+/* ===== Badge rechtsboven ===== */
+.card-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #111;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.3rem 1rem;
+    border-bottom-left-radius: 8px;
+    transform: rotate(45deg) translate(25%, -35%);
+    transform-origin: top right;
+    width: 140px;
+    text-align: center;
+    pointer-events: none;
+}
+
+/* ===== Onderste gedeelte (tekstvak) ===== */
+.img-content {
+    padding: 1rem 1.2rem;
+    color: #f5f5f5;
+    background: #3e584d;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 50px;
+}
+
+.img-content h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.1rem;
+    margin: 0 0 0.4rem 0;
+    text-align: center;
+    color: #fdfdfd;
+}
+
+.img-content p {
+    font-size: 0.9rem;
+    color: #dcdcdc;
+    line-height: 1.5;
+    text-align: center;
+    flex-grow: 1;
+}
+
+/* ===== Responsive layout ===== */
+@media (max-width: 700px) {
+    .img-top {
+        height: 160px;
+    }
+
+    .img-content h3 {
+        font-size: 1rem;
+    }
+}
+
+
+/* Zorg dat PDF-kaarten er hetzelfde uitzien als images */
+.img-item.pdf iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 0;
+    background: #222;
+    padding-left: 2rem;
+}
+
+/* Specifieke hoogte zodat de PDF mooi vult */
+.img-item.pdf .img-top {
+    height: 280px;
+    /* groter dan afbeeldingen */
+    background: #111;
+}
+
+

@@ -80,7 +80,10 @@ const tools = [
                 const showBadge = rawYear.toLowerCase() !== "unknown";
                 const yearClass = showBadge ? `year-${rawYear}` : "";
                 const typeClass = `type-${rawType}`;
-
+                const imageUrl =
+                    project.img?.[0] ||
+                    project.image?.url ||
+                    "/images/none.jpg";
                 return (
                     <div
                         id={`item-${project.title}`}
@@ -102,19 +105,10 @@ const tools = [
                             <span class={`badge ${yearClass}`}>{rawYear}</span>
                         )}
 
-                        <div class="img-area">
-                            {/* <Image
-                                src={
-                                    project.image?.url
-                                        ? project.image.url
-                                        : "/images/none.jpg"
-                                }
-                                alt={project.title || "No title available"}
-                                width="400"
-                                height="400"
-                                format="avif"
-                            /> */}
-                        </div>
+                        <div
+                            class="img-area"
+                            style={`background-image: url('${imageUrl}'); background-size: cover; background-position: center;`}
+                        />
                         <div class="info">
                             <h3 class="info_naam">
                                 {project.title || "No title available"}
@@ -134,7 +128,7 @@ const tools = [
                                 ))}
                             </p>
                             <Button
-                                button_url={`/collection/${project.slug}`}
+                                button_url={`/${project.id}`}
                                 button_text="See more"
                                 alignment="center"
                                 backgroundColor="background"
@@ -267,15 +261,3 @@ const tools = [
     // Initial filtering on page load
     filterProjects();
 </script>
-<style>
-    .single-card.type-school-project {
-        background-color: #8476b4; /* lichtgroen */
-    }
-
-    .single-card.type-prive {
-        background-color: #136948; /* lichtroze */
-    }
-    .single-card.type-solo-project {
-        background-color: #c93899; /* lichtroze */
-    }
-</style>

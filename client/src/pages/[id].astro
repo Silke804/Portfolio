@@ -1,0 +1,152 @@
+---
+import { projectData } from "../scripts/data.js";
+import "../style/baseLayout.css";
+import "../style/id.css";
+
+export function getStaticPaths() {
+    return projectData.map((p) => ({
+        params: { id: p.id.toString() },
+        props: { project: p },
+    }));
+}
+
+const { project } = Astro.props;
+
+// ✅ Embed helper beschikbaar tijdens server-render
+function getEmbedSrc(url) {
+    // Figma: forceer file-URL en maak embed-URL
+    if (url.includes("figma.com/design") || url.includes("figma.com/file")) {
+        const fileUrl = url.replace("figma.com/design", "figma.com/file");
+        return `https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(fileUrl)}`;
+    }
+
+    // Google Drive: file → preview
+    if (url.includes("drive.google.com/file/d/")) {
+        return url.replace("/view", "/preview");
+    }
+
+    // Google Drive: folder → embeddedfolderview
+    if (url.includes("drive.google.com/drive")) {
+        const match = url.match(/folders\/([^/?#]+)/);
+        if (match) {
+            return `https://drive.google.com/embeddedfolderview?id=${match[1]}#grid`;
+        }
+    }
+
+    return url;
+}
+---
+
+<html lang="nl">
+    <head>
+        <meta charset="utf-8" />
+        <title>{project.title} | Portfolio</title>
+    </head>
+    <body>
+        <p><a href="/portfolio">← Terug naar portfolio</a></p>
+
+        <div class="project_info">
+            <div>
+                <h1>{project.title}</h1>
+                <p>{project.description}</p>
+
+                {
+                    project.interpretation?.trim() && (
+                        <div>
+                            <h2>My interpretation of the assignment</h2>
+                            <p>{project.interpretation}</p>
+                        </div>
+                    )
+                }
+            </div>
+
+            <section class="project-details">
+                <img
+                    class="project-image"
+                    src={project.img}
+                    alt={project.title}
+                    width="500"
+                    height="600"
+                />
+                <div class="badge">
+                    {
+                        project.filters?.projectType?.map((x) => (
+                            <span class="project-tag">{x}</span>
+                        ))
+                    }
+                </div>
+            </section>
+        </div>
+
+        <section class="process_grid">
+            {project.imgGrid && <h2 class="proces_tittel">End result</h2>}
+            {
+                project.imgGrid
+                    ?.filter((s) => s?.src)
+                    .map((step) => (
+                        <figure class="img-item">
+                            <div class="img-top">
+                                <img src={step.src} alt={project.title} />
+                            </div>
+                            <figcaption class="img-content">
+                                <p>{step.caption}</p>
+                            </figcaption>
+                        </figure>
+                    ))
+            }
+        </section>
+
+        <section class="process_grid">
+            {
+                project.processSteps?.length > 0 && (
+                    <h2 class="proces_tittel">Proces</h2>
+                )
+            }
+
+            {
+                project.processSteps
+                    ?.filter((s) => s?.src)
+                    .map((step) => {
+                        const isDriveOrPdf =
+                            step.type === "pdf" ||
+                            step.src.includes("drive.google.com") ||
+                            step.src.includes("figma.com");
+
+                        if (isDriveOrPdf) {
+                            return (
+                                <div class="img-item pdf">
+                                    <div class="img-top">
+                                        <iframe
+                                            src={getEmbedSrc(step.src)}
+                                            style="width:100%;height:600px;border:0;"
+                                            allow="autoplay; fullscreen"
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                    <div class="img-content">
+                                        <p>{step.caption}</p>
+                                    </div>
+                                </div>
+                            );
+                        }
+
+                        return (
+                            <figure class="img-item">
+                                <div class="img-top">
+                                    <img src={step.src} alt={project.title} />
+                                </div>
+                                <figcaption class="img-content">
+                                    <p>{step.caption}</p>
+                                </figcaption>
+                            </figure>
+                        );
+                    })
+            }
+        </section>
+
+        <section class="reflection-section">
+            <h2>Reflectie</h2>
+            <p>{project.reflection}</p>
+        </section>
+    </body>
+</html>

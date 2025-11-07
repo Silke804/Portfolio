@@ -8,7 +8,7 @@ const { id, label, options, name, tools } = Astro.props;
         class="dropdown-button"
         id={`${Astro.props.id}DropdownButton`}
     >
-        {Astro.props.label} ▼
+        {Astro.props.label} &#9660
         <span class="selected-values" id={`selected${Astro.props.id}Text`}>
         </span>
     </button>
@@ -85,5 +85,9 @@ const { id, label, options, name, tools } = Astro.props;
         align-items: center;
         padding: 4px 0;
         cursor: pointer;
+    }
+    .selected-values {
+        font-weight: italic;
+        font-size: 12px;
     }
 </style>

@@ -3,7 +3,6 @@ import "../style/baseLayout.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { projectData } from "../scripts/data.js";
 import Project from "../components/ProjectCard.astro";
-
 ---
 
 <body>
@@ -13,7 +12,7 @@ import Project from "../components/ProjectCard.astro";
             pageTitleH2="My Portfolio"
             pageText="Explore my projects and artworks"
         >
-            <a href="/sources/source-1/">Bronnen</a>
+            <!-- <a href="/sources/source-1/">Bronnen</a> -->
 
             <section class="bg-gray-50 px-6 py-10">
                 <div class="max-w-screen-xl mx-auto">
@@ -21,17 +20,10 @@ import Project from "../components/ProjectCard.astro";
                         My Projects
                     </h1>
                     <div class="card-grid">
-                        <!-- {
-                            projectData.map((project) => (
-                                <ProjectCard {...project} />
-                            ))
-                        } -->
-                        <Project/>
+                        <Project />
                     </div>
                 </div>
             </section>
-
         </BaseLayout>
-     
     </main></body
 >
