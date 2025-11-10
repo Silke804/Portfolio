@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-    site: 'https://silke804.github.io/Portfolio/',
+    site: 'https://silke804.github.io/',
     base: '/Portfolio/',
 });
